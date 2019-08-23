@@ -10,7 +10,7 @@ namespace furry {
 namespace tiny {
 
 ModelViewer::ModelViewer(const Model *model, QWidget *parent)
-    : window_size_(1920, 1080), QGLWidget(parent) {
+    : window_size_(1920, 1080), QOpenGLWidget(parent) {
   SetModel(model);
   // Get rid of everything of the window
 

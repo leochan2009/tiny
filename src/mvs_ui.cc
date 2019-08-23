@@ -6,6 +6,7 @@
 #include <functional>
 
 #include <opencv2/core/core.hpp>
+#include <opencv2/imgproc.hpp>
 #include <Eigen/Dense>
 #include <glog/logging.h>
 

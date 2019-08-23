@@ -64,13 +64,13 @@
 #endif
 
 #include <QAbstractEventDispatcher>
-#include <QtGui/QApplication>
+#include <QtWidgets/QApplication>
 #include <QFile>
 #include <QPushButton>
-#include <QtGui/QGraphicsView>
+#include <QtWidgets/QGraphicsView>
 #include <QSizePolicy>
 #include <QInputDialog>
-#include <QtGui/QBoxLayout>
+#include <QtWidgets/QBoxLayout>
 #include <QSettings>
 #include <qtimer.h>
 #include <QtConcurrentRun>

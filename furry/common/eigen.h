@@ -43,20 +43,20 @@ struct ToImpl<std::true_type,
 
 } // furry
 
-namespace std {
-template <typename _Scalar, int _Rows, int _Cols, int _Options, int _MaxRows, int _MaxCols>
-class numeric_limits<Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols> > {
-  typedef Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols> DataType;
-  typedef typename DataType::Scalar Scalar;
- public:
-  static DataType max() {
-    return DataType::Constant(std::numeric_limits<Scalar>::max());
-  }
-  static DataType lowest() {
-    return DataType::Constant(std::numeric_limits<Scalar>::lowest());
-  }
-};
-}
+//namespace std {
+//template <typename _Scalar, int _Rows, int _Cols, int _Options, int _MaxRows, int _MaxCols>
+//class numeric_limits<Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols> > {
+//  typedef Eigen::Matrix< _Scalar, _Rows, _Cols, _Options, _MaxRows, _MaxCols> DataType;
+//  typedef typename DataType::Scalar Scalar;
+// public:
+//  static DataType max() {
+//    return DataType::Constant(std::numeric_limits<Scalar>::max());
+//  }
+//  static DataType lowest() {
+//    return DataType::Constant(std::numeric_limits<Scalar>::lowest());
+//  }
+//};
+//}
 
 namespace std {
 

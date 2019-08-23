@@ -1,14 +1,15 @@
 cmake_minimum_required(VERSION 2.6)
 
 project(tiny)
-
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME})
 
 if (APPLE)
 set(CMAKE_Fortran_COMPILER "gfortran")
-set(CMAKE_CXX_COMPILER "clang++")
+set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 
-#set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wno-reorder -Wno-enum-compare -frounding-math")
+set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wno-reorder -Wno-enum-compare -frounding-math")
 set(CMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++ -Wall -Wno-reorder -Wno-mismatched-tags")
 set(CMAKE_EXE_LINKER_FLAGS "-stdlib=libc++")
 set(CMAKE_SHARED_LINKER_FLAGS "-stdlib=libc++")
@@ -107,11 +108,12 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
 if (APPLE)
 set(EIGEN3_INCLUDE_DIR /usr/local/include/eigen3/)
-set(EIGEN_INCLUDE_DIRS /usr/local/include/eigen3/)
-set(EIGEN_INCLUDE_DIR /usr/local/include/eigen3/)
+#set(EIGEN_INCLUDE_DIRS /usr/local/include/eigen3/)
+#set(EIGEN_INCLUDE_DIR /usr/local/include/eigen3/)
 else ()
 set(EIGEN3_INCLUDE_DIR /usr/include/eigen3)
 endif()
+find_package (Eigen3 3.3 REQUIRED NO_MODULE)
 
 pkg_check_modules(OPENCV opencv)
 set(OPENCV_INCLUDE_DIR ${OPENCV_INCLUDE_DIR})
@@ -121,6 +123,7 @@ set(OPENCV_LIBRARY_DIR ${OPENCV_LIBRARY_DIR})
 else ()
 set(OPENCV_LIBRARY_DIR /u/fy/usr/lib/)
 endif ()
+find_package(OpenCV REQUIRED)
 
 # message(STATUS "opencv library dir: " ${OPENCV_LIBRARIES})
 
@@ -183,9 +186,9 @@ set(OPTIMIZATION_LIBRARIES ${CERES_LIBRARIES} ${SUITESPARSE_LIBRARIES} amd gmp m
 else (APPLE)
 set(OPT_LIBRARY_DIR /u/fy/usr/lib)
 set(OPTIMIZATION_LIBRARIES ${CERES_LIBRARIES} ${SUITESPARSE_LIBRARIES} cholmod amd gomp mpfr
-# ${GHOME}/lib/libgomp.so 
-# ${GHOME}/lib/libmpfr.so 
-# libsuitesparseconfig.a  
+# ${GHOME}/lib/libgomp.so
+# ${GHOME}/lib/libmpfr.so
+# libsuitesparseconfig.a
 glog ${GFLAGS_LIBRARIES} lapack blas protobuf)
 endif (APPLE)
 
@@ -194,10 +197,11 @@ endif (APPLE)
 ############################################################
 
 set(QT_QMAKE_EXECUTABLE /usr/local/bin/qmake)
-find_package(Qt4 4.6 COMPONENTS QtCore QtGui QtTest QtUiTools QtXml QtOpenGL REQUIRED)
-include(${QT_USE_FILE})
+find_package(Qt5 COMPONENTS Core Gui Test UiTools Xml OpenGL Concurrent REQUIRED)
+set(QT_LIBRARIES Qt5::Widgets Qt5::Core Qt5::Gui Qt5::Concurrent Qt5::Test Qt5::OpenGL)
 add_definitions(${QT_DEFINITIONS})
-
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
 include_directories(
 					"/usr/local/include/"

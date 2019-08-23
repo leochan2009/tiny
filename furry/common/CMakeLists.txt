@@ -34,7 +34,7 @@ add_library(
 		util.cc
 )
 
-target_link_libraries(furry_common ${TBB_LIBRARIES} glog ${GFLAGS_LIBRARIES})
+target_link_libraries(furry_common ${TBB_LIBRARIES} glog ${GFLAGS_LIBRARIES} ${OpenCV_LIBS} Eigen3::Eigen)
 
 install (TARGETS furry_common DESTINATION lib/${PROJECT_NAME})
 install (FILES

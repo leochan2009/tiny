@@ -30,7 +30,7 @@ using namespace Eigen;
 
 class UnaryEnergy {
 public:
-	~UnaryEnergy();
+    ~UnaryEnergy();
 	// Set the unary
 	virtual MatrixXf get( ) const = 0;
 	// Gradient computation
@@ -43,6 +43,7 @@ protected:
 	MatrixXf unary_;
 public:
 	ConstUnaryEnergy( const MatrixXf & unary );
+    ~ConstUnaryEnergy(){};
 	virtual MatrixXf get( ) const;
 };
 class LogisticUnaryEnergy: public UnaryEnergy {
@@ -50,6 +51,7 @@ protected:
 	MatrixXf L_, f_;
 public:
 	LogisticUnaryEnergy( const MatrixXf & L, const MatrixXf & feature );
+    ~LogisticUnaryEnergy(){};
 	virtual MatrixXf get( ) const;
 	virtual VectorXf parameters() const;
 	virtual void setParameters( const VectorXf & v );

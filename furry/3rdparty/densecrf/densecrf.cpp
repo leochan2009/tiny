@@ -40,13 +40,13 @@
 /////////////////////////////
 /////  Alloc / Dealloc  /////
 /////////////////////////////
-DenseCRF::DenseCRF(int N, int M) : N_(N), M_(M), unary_(0) {
+DenseCRF::DenseCRF(int N, int M) : N_(N), M_(M), unary_(nullptr) {
 }
 DenseCRF::~DenseCRF() {
-	if (unary_)
-		delete unary_;
-	for( unsigned int i=0; i<pairwise_.size(); i++ )
-		delete pairwise_[i];
+//    if (unary_)
+//        delete unary_;
+//    for( unsigned int i=0; i<pairwise_.size(); i++ )
+//        delete pairwise_[i];
 }
 DenseCRF2D::DenseCRF2D(int W, int H, int M) : DenseCRF(W*H,M), W_(W), H_(H) {
 }

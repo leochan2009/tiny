@@ -74,7 +74,7 @@ void ExtractPatch(const cv::Mat& image,
                   Mat *patch_,
                   Mat *mask_ = nullptr,
                   uint8_t *completed_ = nullptr) {
-  assert(image.type() == DataType<T>::type);
+  //assert(image.type() == DataType<T>::type());
   Mat local_patch;
   Mat local_mask;
   uint8_t local_completed;

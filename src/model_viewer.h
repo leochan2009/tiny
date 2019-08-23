@@ -8,8 +8,9 @@
 #include <Qt>
 #include <QObject>
 #include <QApplication>
-#include <QGLWidget>
-#include <QtOpenGL>
+#include <QOpenGLWidget>
+#include <qopengl.h>
+//#include <QtOpenGL>
 
 #if __APPLE__
 #include <OpenGL/glu.h>
@@ -24,7 +25,7 @@
 namespace furry {
 namespace tiny {
 
-class ModelViewer : public QGLWidget {
+class ModelViewer : public QOpenGLWidget {
   Q_OBJECT
 
  public:
